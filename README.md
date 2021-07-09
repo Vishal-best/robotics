@@ -1,2 +1,2 @@
 # robotics
-robotic arm simulation
+robotic arm urdf,servo motor
