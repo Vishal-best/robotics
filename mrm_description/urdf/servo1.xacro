@@ -1,0 +1,73 @@
+<?xml version="1.0" ?>
+
+<robot name="mrm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <material name="blue">
+        <color rgba="0 0 0.8 1"/>
+    </material>
+    <material name="white">
+        <color rgba="1.0 1.0 1.0 1"/>
+    </material>
+    <material name="green">
+        <color rgba="0 0.8 0 1"/>
+    </material>
+    <link name="base_link">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0.115"/>
+            <geometry>
+                <box size="0.23 0.12 0.23"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+    </link>
+
+    <joint name="base_link__link1" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="link1"/>
+    </joint>
+
+    <link name="link1">
+        <visual>
+            <origin rpy="0 0 0" xyz="0.05 0 0.23"/>
+            <geometry>
+                <box size="0.115 0.12 0.05"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+    </link>
+
+    <joint name="link1__link2" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000.0" lower="-3.14" upper="3.14" velocity="0.5" />
+        <origin rpy="0 0 0" xyz="0.05 0 0.27"/>
+        <parent link="link1"/>
+        <child link="link2"/>
+    </joint>
+
+    <link name="link2">
+        <visual>
+            <origin rpy="0 0 0" xyz="0.05 0 0.27"/>
+            <geometry>
+                <cylinder radius="0.025"  length="0.025"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+    </link>
+
+    <joint name="link2__link3" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <parent link="link2"/>
+        <child link="link3"/>
+    </joint>
+
+    <link name="link3">
+        <visual>
+            <origin rpy="0 0 0" xyz="0.05 0 0.55"/>
+            <geometry>
+                <box size="0.25 0.07 0.56"/>
+            </geometry>
+            <material name="green"/>
+        </visual>
+    </link>
+
+</robot>
